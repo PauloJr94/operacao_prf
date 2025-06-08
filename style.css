@@ -222,7 +222,7 @@ body, html {
   left: 0;
   width: 100%;
   background-color: rgba(1, 1, 75, 0.85); /* Cor de fundo */
-  color: yellow;
+  color: #FFD100;
   display: flex;
   justify-content: space-between;
   align-items: center;
