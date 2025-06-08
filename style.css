@@ -217,14 +217,18 @@ body, html {
 
 /* Cabeçalho */
 .header-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(1, 1, 75, 0.85); /* Cor de fundo */
+  color: yellow;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: rgba(1, 1, 75, 0.85); /* Cor de fundo */
-  padding: 55px;
-  flex-wrap: wrap; /* Permite quebra de linha se necessário */
-  gap: 10px; /* Espaçamento entre os itens ao quebrar */
-  width: 100%;
+  padding: 30px;
+  flex-wrap: wrap; /* Permite quebra de linha se necessário*/ 
+  gap: 5% /* Espaçamento entre os itens ao quebrar */s
 }
 
 .header-title {
@@ -518,4 +522,11 @@ body, html {
   text-transform: uppercase;
   border-bottom: 1px solid #FFD100;
   padding-bottom: 6px;
+}
+
+#tarefasPanel,
+#nextMissionsPanel,
+#studyGoalsPanel,
+#historyPanel {
+  margin-top: 20px; /* Isso faz com que fiquem abaixo da barra*/
 }
