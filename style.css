@@ -1,0 +1,519 @@
+/* Fundo da tela */
+body, html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  font-family: 'Segoe UI', sans-serif;
+  overflow-x: hidden;
+}
+
+.background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url("prf.png") no-repeat center center fixed;
+  background-size: contain;
+  background-color: white;
+  background-repeat: no-repeat;
+  z-index: -1;
+}
+
+/* Container do relógio */
+.clock-container {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  padding: 10px;
+}
+
+/* Data por extenso */
+.full-date {
+  color: #FFD100;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  text-transform: capitalize;
+}
+
+/* Flip Clock */
+.flip-clock {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  font-family: 'Courier New', Courier, monospace;
+}
+
+.digit {
+  perspective: 1000px;
+  margin: 0 2px;
+}
+
+.card {
+  position: relative;
+  width: 50px;
+  height: 70px;
+  transform-style: preserve-3d;
+  transition: transform 0.6s ease-in-out;
+  background: #01014b;
+  border-radius: 6px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  color: #FFD100;
+  font-size: 48px;
+  font-weight: bold;
+  line-height: 70px;
+  text-align: center;
+  user-select: none;
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  backface-visibility: hidden;
+  border-radius: 6px;
+}
+
+.card-front {
+  top: 0;
+  background: #01014B;
+  border-bottom: 1px solid #FFD100;
+  z-index: 2;
+}
+
+.card-back {
+  bottom: 0;
+  background: #01014B;
+  border-top: 1px solid #FFD100;
+  transform: rotateX(180deg);
+  z-index: 1;
+}
+
+.separator {
+  color: #FFD100;
+  font-size: 48px;
+  font-weight: bold;
+  padding: 0 5px;
+  user-select: none;
+}
+
+/* Painel de tarefas */
+.task-panel {
+  position: fixed;
+  top: 160px;
+  left: 20px;
+  width: 230px;
+  background-color: rgba(1, 1, 75, 0.9);
+  color: #FFD100;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  font-family: 'Segoe UI', sans-serif;
+  z-index: 10;
+}
+
+.task-panel h2 {
+  margin-top: 0;
+  font-size: 20px;
+  border-bottom: 1px solid #FFD100;
+  padding-bottom: 5px;
+}
+
+.task-panel ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.task-panel li {
+  margin: 10px 0;
+  display: flex;
+  align-items: center;
+}
+
+.task-panel input[type="checkbox"] {
+  margin-right: 10px;
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+.task-panel h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+}
+
+#task-list {
+  list-style: none;
+  padding: 0;
+  margin: 10px 0;
+}
+
+#task-list li {
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+}
+
+#task-list input[type="checkbox"] {
+  margin-right: 10px;
+  accent-color: #FFD100;
+}
+
+.task-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.task-item input[type="checkbox"] {
+  margin-right: 10px;
+}
+
+.task-item input[type="text"] {
+  flex: 1;
+  padding: 4px;
+  font-size: 14px;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #FFD100;
+  border-radius: 4px;
+}
+
+.task-item button {
+  margin-left: 6px;
+  background-color: #FFD100;
+  color: #01014B;
+  border: none;
+  padding: 2px 6px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+#edit-btn {
+  background-color: #FFD100;
+  color: #01014B;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  width: 100%;
+}
+
+#edit-btn:hover {
+  background-color: #e6bf00;
+}
+
+/* Cabeçalho superior */
+.header-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 140px;
+  background-color: rgba(1, 1, 75, 0.85); /* azul escuro transparente */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 5;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.5);
+}
+
+.header-title {
+  color: #FFD100;
+  font-size: 32px;
+  font-weight: 900;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  text-shadow: 2px 2px 4px #000;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start; /* Garante que o título esteja alinhado à esquerda */
+}
+
+.header-title::before {
+  content: '\2620'; /* Código Unicode para a caveira */
+  font-size: 36px;
+  margin-right: 10px;
+}
+
+
+
+/* Reposiciona o relógio por cima do cabeçalho */
+.clock-container {
+  position: fixed;
+  top: 10px;
+  right: 20px;
+  z-index: 10;
+}
+
+/* Estilo do painel Pomodoro */
+/* Ajusta o painel Pomodoro para ficar abaixo do cabeçalho e acima do painel de tarefas */
+.pomodoro-panel {
+  position: fixed;
+  top: 450px; /* Ajuste baseado na altura do task-panel */
+  left: 20px;
+  width: 230px;
+  background-color: rgba(1, 1, 75, 0.9);
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.5);
+  color: #FFD100;
+  z-index: 5;
+}
+
+.pomodoro-panel h2 {
+  margin-top: 0;
+  font-size: 20px;
+  border-bottom: 1px solid #FFD100;
+  padding-bottom: 5px;
+}
+
+.pomodoro-time {
+  font-size: 36px;
+  text-align: center;
+  margin: 10px 0;
+  font-weight: bold;
+}
+
+.pomodoro-controls {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.pomodoro-controls input {
+  padding: 6px;
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.pomodoro-controls button {
+  background-color: #FFD100;
+  color: #01014B;
+  border: none;
+  padding: 8px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.pomodoro-controls button:hover {
+  background-color: #e6bf00;
+}
+
+/* Painel de Métodos de Estudo */
+.study-goals-panel {
+  position: absolute;
+  top: 575px; /* ajuste conforme desejar */
+  right: 20px;
+  width: 230px;
+  padding: 20px;
+  background-color: rgba(1, 1, 75, 0.8);
+  border-radius: 10px;
+  color: #FFD100;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  z-index: 5;
+}
+
+.study-goals-panel h2 {
+  margin-top: 0;
+  font-size: 24px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #FFD100;
+  padding-bottom: 5px;
+}
+
+.goal-inputs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.goal-inputs input,
+.goal-inputs select {
+  padding: 8px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  flex: 1;
+  background-color: #ffffff;
+  color: #01014B;
+  border: 1px solid #FFD100;
+}
+
+.goal-inputs button {
+  background-color: #FFD100;
+  border: none;
+  padding: 8px 12px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  color: #01014B;
+}
+
+.goal-inputs button:hover {
+  background-color: #FFB900;
+}
+
+.goals-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.goals-list li {
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid #FFD100;
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  color: #01014B;
+}
+
+.goals-list button {
+  background-color: transparent;
+  border: 1px solid #FFD100;
+  color: #FFD100;
+  padding: 4px 8px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+/* Próximas Missões */
+.next-missions-panel {
+  position: absolute;
+  top: 160px;
+  right: 20px;
+  width: 240px;
+  padding: 15px;
+  background-color: rgba(1, 1, 75, 0.8);
+  border-radius: 10px;
+  color: #FFD100;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  z-index: 5;
+}
+
+.next-missions-panel h2 {
+  margin-top: 0;
+  font-size: 20px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #FFD100;
+  padding-bottom: 6px;
+}
+
+.mission-inputs {
+  display: flex;
+  gap: 6px;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+
+.mission-inputs input {
+  padding: 6px;
+  border: none;
+  border-radius: 5px;
+  font-size: 14px;
+  flex: 1 1 100%;
+  background-color: #ffffff;
+  color: #01014b;
+  border: 1px solid #FFD100;
+}
+
+.mission-inputs input[type="date"] {
+  flex: 1 1 auto;
+  min-width: 100px;
+}
+
+.mission-inputs button {
+  background-color: #FFD100;
+  border: none;
+  padding: 7px 12px;
+  font-weight: bold;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #01014B;
+  flex: 1 1 auto;
+}
+
+.mission-inputs button:hover {
+  background-color: #FFB900;
+}
+
+.missions-list,
+.history-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.missions-list li,
+.history-list li {
+  background-color: rgba(0, 0, 0, 0.4);
+  border: 1px solid #FFD100;
+  border-radius: 6px;
+  padding: 8px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #fff;
+  font-size: 14px;
+}
+
+.missions-list li div,
+.history-list li div {
+  flex: 1;
+}
+
+.missions-list button,
+.history-list button {
+  background-color: transparent;
+  border: 1px solid #FFD100;
+  color: #FFD100;
+  padding: 3px 7px;
+  border-radius: 5px;
+  cursor: pointer;
+  margin-left: 5px;
+  font-size: 12px;
+}
+
+.missions-history-panel {
+  position: absolute;
+  top: 480px;
+  right: 20px;
+  width: 240px;
+  padding: 15px;
+  background-color: #01014b;
+  border-radius: 10px;
+  color: #FFD100;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+  z-index: 5;
+}
+
+.missions-history-panel h2 {
+  margin-top: 0;
+  font-size: 20px;
+  text-transform: uppercase;
+  border-bottom: 1px solid #FFD100;
+  padding-bottom: 6px;
+}

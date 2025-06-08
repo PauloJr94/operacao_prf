@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Planner PRF</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="background"></div>
+
+  <!-- Cabeçalho -->
+  <div class="header-bar">
+    <h1 class="header-title">OPERAÇÃO PRF</h1>
+  </div>
+
+  <!-- Relógio e data -->
+  <header class="clock-container">
+    <div id="full-date" class="full-date"></div>
+    <div class="flip-clock">
+      <div class="digit" id="hour-tens"><div class="card"><div class="card-front">0</div><div class="card-back">0</div></div></div>
+      <div class="digit" id="hour-ones"><div class="card"><div class="card-front">0</div><div class="card-back">0</div></div></div>
+      <span class="separator">:</span>
+      <div class="digit" id="minute-tens"><div class="card"><div class="card-front">0</div><div class="card-back">0</div></div></div>
+      <div class="digit" id="minute-ones"><div class="card"><div class="card-front">0</div><div class="card-back">0</div></div></div>
+    </div>
+  </header>
+
+  <!-- Painel lateral de tarefas -->
+  <aside class="task-panel">
+    <h2>Tarefas Diárias</h2>
+    <ul id="task-list"></ul>
+    <button id="edit-btn">✏️ Editar Tarefas</button>
+  </aside>
+
+  <!-- Painel de cronometro -->
+  <aside class="pomodoro-panel">
+  <h2>Pomodoro Tático</h2>
+  <div class="pomodoro-time" id="timer">00:00</div>
+  <div class="pomodoro-controls">
+    <input type="number" id="custom-time" placeholder="Minutos" min="1" max="180" />
+    <button onclick="startTimer()">Iniciar</button>
+    <button onclick="pauseTimer()">Pausar</button>
+    <button onclick="resetTimer()">Finalizar</button>
+  </div>
+</aside>
+
+<!-- Painéis laterais -->
+<div class="side-panels">
+  <!-- Painel Próximas Missões -->
+  <section class="next-missions-panel">
+    <h2>Próximas Missões</h2>
+    <div class="mission-inputs">
+      <input type="text" id="mission-name" placeholder="Nome da prova" />
+      <input type="date" id="mission-date" />
+      <button onclick="addMission()">Adicionar</button>
+    </div>
+    <ul id="missions-list" class="missions-list"></ul>
+  </section>
+
+  <!-- Painel Histórico de Provas -->
+  <section class="missions-history-panel">
+    <h2>Histórico de Provas</h2>
+    <ul id="history-list" class="history-list"></ul>
+  </section>
+
+  <!-- Painel de Metas de Estudo -->
+  <section class="study-goals-panel">
+    <h2>Metas de Estudo</h2>
+    <div class="goal-inputs">
+      <input type="text" id="subject" placeholder="Matéria" />
+      <input type="text" id="method" placeholder="Método de Estudo" />
+      <input type="number" id="study-time" placeholder="Tempo (min)" min="1" />
+      <button onclick="addStudyGoal()">Adicionar</button>
+    </div>
+    <ul id="goals-list" class="goals-list"></ul>
+  </section>
+</div>
+
+  <script src="script.js"></script>
+</body>
+</html>
