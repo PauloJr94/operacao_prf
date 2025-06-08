@@ -217,7 +217,7 @@ body, html {
 
 /* Cabeçalho */
 .header-bar {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
   width: 100%;
@@ -264,7 +264,7 @@ body, html {
 /* Estilo do painel Pomodoro */
 /* Ajusta o painel Pomodoro para ficar abaixo do cabeçalho e acima do painel de tarefas */
 .pomodoro-panel {
-  position: fixed;
+  position: absolute;
   top: 450px; /* Ajuste baseado na altura do task-panel */
   left: 20px;
   width: 230px;
@@ -319,7 +319,7 @@ body, html {
 
 /* Painel de Métodos de Estudo */
 .study-goals-panel {
-  position: fixed;
+  position: absolute;
   top: 575px; /* ajuste conforme desejar */
   right: 20px;
   width: 230px;
