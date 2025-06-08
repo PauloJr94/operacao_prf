@@ -213,24 +213,36 @@ body, html {
 /* Cabeçalho */
 .header-bar {
   display: flex;
-  justify-content: flex-start; /* Alinha o conteúdo à esquerda */
+  justify-content: space-between; /* Espaça o conteúdo para as extremidades */
   align-items: center;
   background-color: rgba(1, 1, 75, 0.85); /* Cor de fundo */
   padding: 20px;
   height: 100px; /* Ajuste conforme necessário */
+ flex-wrap: wrap; /* Permite o título e relógio se moverem para uma nova linha quando necessário */
 }
+
 .header-title {
   font-size: 32px;
   color: #FFD100;
-  margin: 0; /* Remove qualquer margem automática */
+  margin: 0;
+  flex: 1; /* Faz com que o título ocupe o máximo possível de espaço */
+  word-wrap: break-word; /* Quebra a linha caso o título ultrapasse o espaço disponível */
 }
 
 .header-title i {
-  margin-right: 10px; /* Espaçamento entre a caveira e o título */
+  margin-right: 10px;
 }
 
+/* Ajuste para telas pequenas */
+@media (max-width: 600px) {
+  .header-title {
+    font-size: 24px; /* Diminui o tamanho do título em telas menores */
+  }
 
-
+  .header-bar {
+    justify-content: center; /* Centraliza o conteúdo em telas menores */
+  }
+}
 
 /* Reposiciona o relógio por cima do cabeçalho */
 .clock-container {
